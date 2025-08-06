@@ -13,7 +13,7 @@ public class App {
                          Arrays.toString(vetor) );    
         BubbleSort<Integer> bsort = new BubbleSort<>();
         Comparator<Integer> comparaInt = (a,b) -> a.compareTo(b);
-        bsort.sort(vetor, comparaInt, true);
+        bsort.sort(vetor, true);
        
         System.out.println("Depois de ordenar:"+ 
                          Arrays.toString(vetor) ); 

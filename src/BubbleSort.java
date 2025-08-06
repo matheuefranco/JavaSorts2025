@@ -36,6 +36,12 @@ public class BubbleSort<T> {
         }// fim if verbose
         return array;
     } 
+    public T[] sort(T[] array, boolean verbose){
+        if(verbose==true)
+            return sort(array, (a,b)->((Comparable<T>) a).compareTo(b), verbose);
+         else   
+            return sort(array, (a,b)->((Comparable<T>) a).compareTo(b));
+    }
 
     public T[] sort(T[] array){
         return sort(array, (a,b)->((Comparable<T>) a).compareTo(b));

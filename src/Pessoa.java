@@ -25,9 +25,6 @@ public class Pessoa implements Comparable<Pessoa> {
                 '}';
     }
     
-   
-
-    //implementar comparable compareto  
     @Override
     public int compareTo(Pessoa outra) {
         return this.nome.compareTo(outra.nome);

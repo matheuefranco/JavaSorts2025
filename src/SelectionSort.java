@@ -15,4 +15,16 @@ public class SelectionSort<T> {
          }// fim for         
          return minIndice;          
     }
+
+    public T[] sort(T[] array, Comparator<T> comparator){
+        for(int i=0;i<array.length-1;i++){
+            int indiceMenor = indiceMenorValorVetor(array, i, comparator);
+            troca(array, i, indiceMenor);
+        }// fim for
+        return  array;
+    }
+
+    public T[] sort(T[] array){
+        return sort(array, (a,b)->((Comparable<T>) a).compareTo(b));
+    }
 }

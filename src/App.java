@@ -26,15 +26,13 @@ public class App {
     }
     public static void main(String[] args)  {
         Scanner leia = new Scanner(System.in);
-        Pessoa[] vetorPessoas = vetorDePessoas(); 
-        System.out.println("Pessoas antes de ordenar:"+
-              Arrays.toString(vetorPessoas));
-        SelectionSort<Pessoa> selectionSortPessoa = new SelectionSort<>();
-        //Criar comparator por data de nascimento
-        Comparator<Pessoa> comparadorData = (a,b) ->  
-                b.getDataNascimento().compareTo(a.getDataNascimento());
-        selectionSortPessoa.sort(vetorPessoas,comparadorData);
-        System.out.println("Pessoas depois de ordenar:"+
-              Arrays.toString(vetorPessoas)); 
+        try {
+            Integer[] vetorInteiros = carregarArquivo("numeros.txt");
+            System.out.println("Array:"+Arrays.toString(vetorInteiros));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+       
     }
 }

@@ -24,14 +24,29 @@ public class App {
         }
         return numeros;
     }
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws Exception {
         Scanner leia = new Scanner(System.in);
-        try {
-            Integer[] vetorInteiros = carregarArquivo("numeros.txt");
-            System.out.println("Array:"+Arrays.toString(vetorInteiros));
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        Integer[] vetorInteiros = carregarArquivo("numeros_aleatorios.txt");
+        System.out.println("Array:"+Arrays.toString(vetorInteiros));
+
+        // Bubble Sort
+        Integer[] vetorBubble = vetorInteiros.clone();
+        BubbleSort bubbleSort = new BubbleSort();
+        bubbleSort.sort(vetorBubble);
+        System.out.println("Bubble Sort - Comparações: " + bubbleSort.getContComparacao() + ", Trocas: " + bubbleSort.getContTroca());
+        System.out.println("Fases: " + bubbleSort.getContFases());
+
+        // Bubble Sort Otimizado
+        Integer[] vetorBubbleOtimizado = vetorInteiros.clone();
+        bubbleSort.sortOptimized(vetorBubbleOtimizado);
+        System.out.println("Bubble Sort Otimizado - Comparações: " + bubbleSort.getContComparacao() + ", Trocas: " + bubbleSort.getContTroca());
+        System.out.println("Fases: " + bubbleSort.getContFases());
+
+        // Selection Sort
+        Integer[] vetorSelection = vetorInteiros.clone();
+        SelectionSort selectionSort = new SelectionSort();
+        selectionSort.sort(vetorSelection);
+        System.out.println("Selection Sort - Comparações: " + selectionSort.getContComparacao() + ", Trocas: " + selectionSort.getContTroca());
         
        
     }

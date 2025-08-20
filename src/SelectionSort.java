@@ -1,15 +1,28 @@
 import java.util.*;
 public class SelectionSort<T> {
+    private int contComparacao=0;
+    private int contTroca=0;
+
+    public int getContComparacao() {
+        return contComparacao;
+    }
+
+    public int getContTroca() {
+        return contTroca;
+    }
+    
     private void troca(T[] array, int i, int j){
             T temp = array[i];
             array[i] = array[j];
             array[j] = temp;
+            contTroca++;
     }   
 
     private int indiceMenorValorVetor(T[] array, int pos, 
                                 Comparator<T> comparator){
          int minIndice = pos;
          for(int i=pos+1;i<array.length;i++){
+            contComparacao++;
             if(comparator.compare(array[i],array[minIndice])<0)
                 minIndice = i;
          }// fim for         
@@ -17,6 +30,8 @@ public class SelectionSort<T> {
     }
 
     public T[] sort(T[] array, Comparator<T> comparator){
+        contComparacao = 0;  
+        contTroca = 0; 
         for(int i=0;i<array.length-1;i++){
             int indiceMenor = indiceMenorValorVetor(array, i, comparator);
             troca(array, i, indiceMenor);

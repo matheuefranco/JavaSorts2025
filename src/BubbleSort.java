@@ -23,7 +23,6 @@ public class BubbleSort<T> extends ObservableSort<T> {
     } 
 
     public T[] sortOptimized(T[] array, Comparator<T> comparator){
-   
         boolean flagTrocou = false;
         int n = array.length;
         for(int fase=1;fase<n;fase++){

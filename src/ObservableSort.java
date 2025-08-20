@@ -16,16 +16,19 @@ public abstract class ObservableSort<T> {
 
     protected void notificarComparacao(int indice1, int indice2){
         this.contadorComparacao++;
-        observer.aoComparar(indice1, indice2);
+        if(observer!=null)
+          observer.aoComparar(indice1, indice2);
     }
 
     protected void notificarTroca(int indice1, int indice2){
         this.contadorTrocas++;
-        observer.aoTrocar(indice1, indice2);
+        if(observer!=null)
+            observer.aoTrocar(indice1, indice2);
     }
 
     protected  void notificarConclusao(){
-        observer.aoConcluir(contadorComparacao, contadorTrocas);
+        if(observer!=null)
+            observer.aoConcluir(contadorComparacao, contadorTrocas);
     }
 
 }

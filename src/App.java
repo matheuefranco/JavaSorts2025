@@ -26,17 +26,18 @@ public class App {
     }
     public static void main(String[] args) throws Exception {
         Scanner leia = new Scanner(System.in);
-        Integer[] vetorInteiros = carregarArquivo("numeros_aleatorios.txt");
+        Integer[] vetorInteiros = carregarArquivo("numeros.txt");
         System.out.println("Array:"+Arrays.toString(vetorInteiros));
 
         // Bubble Sort
         Integer[] vetorBubble = vetorInteiros.clone();
         BubbleSort bubbleSort = new BubbleSort();
+        SortObserver observador = new SortObserver();
+        bubbleSort.setObserver(observador);
         bubbleSort.sort(vetorBubble);
-        System.out.println("Bubble Sort - Comparações: " + bubbleSort.getContComparacao() + ", Trocas: " + bubbleSort.getContTroca());
-        System.out.println("Fases: " + bubbleSort.getContFases());
 
-        // Bubble Sort Otimizado
+
+      /*  // Bubble Sort Otimizado
         Integer[] vetorBubbleOtimizado = vetorInteiros.clone();
         bubbleSort.sortOptimized(vetorBubbleOtimizado);
         System.out.println("Bubble Sort Otimizado - Comparações: " + bubbleSort.getContComparacao() + ", Trocas: " + bubbleSort.getContTroca());
@@ -48,6 +49,6 @@ public class App {
         selectionSort.sort(vetorSelection);
         System.out.println("Selection Sort - Comparações: " + selectionSort.getContComparacao() + ", Trocas: " + selectionSort.getContTroca());
         
-       
+        */
     }
 }

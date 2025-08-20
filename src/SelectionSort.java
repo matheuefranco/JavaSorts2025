@@ -34,7 +34,8 @@ public class SelectionSort<T> {
         contTroca = 0; 
         for(int i=0;i<array.length-1;i++){
             int indiceMenor = indiceMenorValorVetor(array, i, comparator);
-            troca(array, i, indiceMenor);
+            //if(comparator.compare(array[i],array[indiceMenor])>0)
+                troca(array, i, indiceMenor);
         }// fim for
         return  array;
     }

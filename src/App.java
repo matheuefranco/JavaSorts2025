@@ -25,30 +25,41 @@ public class App {
         return numeros;
     }
     public static void main(String[] args) throws Exception {
+        int tamanho = 100000;
+        long inicio, fim;
         Scanner leia = new Scanner(System.in);
-        Integer[] vetorInteiros = carregarArquivo("numeros.txt");
-        System.out.println("Array:"+Arrays.toString(vetorInteiros));
-
+        //Integer[] vetorInteiros = carregarArquivo("numeros.txt");
+        //System.out.println("Array:"+Arrays.toString(vetorInteiros));
+        Integer[] vetorInteiros = new Integer[tamanho];
+        Random rand = new Random();
+        for(int i=0;i<tamanho;i++)
+            vetorInteiros[i] = rand.nextInt(100);
         // Bubble Sort
         Integer[] vetorBubble = vetorInteiros.clone();
         BubbleSort bubbleSort = new BubbleSort();
-        SortObserver observador = new SortObserver();
-        bubbleSort.setObserver(observador);
+        //SortObserver observador = new SortObserver();
+        //bubbleSort.setObserver(observador);
+        inicio = System.currentTimeMillis();
         bubbleSort.sort(vetorBubble);
-
-
-      /*  // Bubble Sort Otimizado
-        Integer[] vetorBubbleOtimizado = vetorInteiros.clone();
-        bubbleSort.sortOptimized(vetorBubbleOtimizado);
-        System.out.println("Bubble Sort Otimizado - Comparações: " + bubbleSort.getContComparacao() + ", Trocas: " + bubbleSort.getContTroca());
-        System.out.println("Fases: " + bubbleSort.getContFases());
+        fim = System.currentTimeMillis();
+        System.out.println("Bubble Sort Tempo em ms:"+ (fim-inicio)  );
 
         // Selection Sort
         Integer[] vetorSelection = vetorInteiros.clone();
         SelectionSort selectionSort = new SelectionSort();
+        inicio = System.currentTimeMillis();
         selectionSort.sort(vetorSelection);
-        System.out.println("Selection Sort - Comparações: " + selectionSort.getContComparacao() + ", Trocas: " + selectionSort.getContTroca());
+        fim = System.currentTimeMillis();
+        System.out.println("Selection Sort Tempo em ms:"+ (fim-inicio)  );
+
+        // Insertion Sort
+        Integer[] vetorInsertion = vetorInteiros.clone();
+        InsertionSort insertionSort = new InsertionSort();
+        inicio = System.currentTimeMillis();
+        selectionSort.sort(vetorInsertion);
+        fim = System.currentTimeMillis();
+        System.out.println("Insertion Sort Tempo em ms:"+ (fim-inicio)  );
         
-        */
+    
     }
 }

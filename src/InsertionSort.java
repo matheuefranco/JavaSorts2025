@@ -9,9 +9,12 @@ public class InsertionSort<T> extends ObservableSort<T> {
         int indiceComparacao = i-1;
         while(indiceComparacao>=0 && 
               comparator.compare(eleito,array[indiceComparacao])<0){
+            notificarComparacao(indiceComparacao, i);
             array[indiceComparacao+1] = array[indiceComparacao];
+            notificarTroca(indiceComparacao+1, indiceComparacao);
             indiceComparacao--;    
         }// fim while
+        notificarComparacao(indiceComparacao+1, i);
         array[indiceComparacao+1] =  eleito;
     }
 
@@ -19,6 +22,7 @@ public class InsertionSort<T> extends ObservableSort<T> {
         for(int i=1;i<array.length;i++){
             insert(array, i, comparator);
         }
+        notificarConclusao();
         return array;
     }
 

@@ -25,7 +25,7 @@ public class App {
         return numeros;
     }
     public static void main(String[] args) throws Exception {
-        int tamanho = 100000;
+        int tamanho = 50000;
         long inicio, fim;
         Scanner leia = new Scanner(System.in);
         //Integer[] vetorInteiros = carregarArquivo("numeros.txt");
@@ -37,8 +37,8 @@ public class App {
         // Bubble Sort
         Integer[] vetorBubble = vetorInteiros.clone();
         BubbleSort bubbleSort = new BubbleSort();
-        //SortObserver observador = new SortObserver();
-        //bubbleSort.setObserver(observador);
+        SortObserver observador = new SortObserver();
+        bubbleSort.setObserver(observador);
         inicio = System.currentTimeMillis();
         bubbleSort.sort(vetorBubble);
         fim = System.currentTimeMillis();
@@ -47,6 +47,7 @@ public class App {
         // Selection Sort
         Integer[] vetorSelection = vetorInteiros.clone();
         SelectionSort selectionSort = new SelectionSort();
+        selectionSort.setObserver(new SortObserver());
         inicio = System.currentTimeMillis();
         selectionSort.sort(vetorSelection);
         fim = System.currentTimeMillis();
@@ -55,8 +56,9 @@ public class App {
         // Insertion Sort
         Integer[] vetorInsertion = vetorInteiros.clone();
         InsertionSort insertionSort = new InsertionSort();
+        insertionSort.setObserver(new SortObserver());
         inicio = System.currentTimeMillis();
-        selectionSort.sort(vetorInsertion);
+        insertionSort.sort(vetorInsertion);
         fim = System.currentTimeMillis();
         System.out.println("Insertion Sort Tempo em ms:"+ (fim-inicio)  );
         

@@ -61,7 +61,6 @@ public class App {
         insertionSort.sort(vetorInsertion);
         fim = System.currentTimeMillis();
         System.out.println("Insertion Sort Tempo em ms:"+ (fim-inicio)  );
-        
     
     }
 }

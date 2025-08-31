@@ -25,7 +25,7 @@ public class App {
         return numeros;
     }
     public static void main(String[] args) throws Exception {
-        int tamanho = 50000;
+        int tamanho = 100000;
         long inicio, fim;
         Scanner leia = new Scanner(System.in);
         //Integer[] vetorInteiros = carregarArquivo("numeros.txt");
@@ -42,7 +42,7 @@ public class App {
         inicio = System.currentTimeMillis();
         bubbleSort.sort(vetorBubble);
         fim = System.currentTimeMillis();
-        System.out.println("Bubble Sort Tempo em ms:"+ (fim-inicio)  );
+        System.out.println("Bubble Sort Tempo em ms:"+ (fim-inicio) +"\n");
 
         // Selection Sort
         Integer[] vetorSelection = vetorInteiros.clone();
@@ -51,7 +51,7 @@ public class App {
         inicio = System.currentTimeMillis();
         selectionSort.sort(vetorSelection);
         fim = System.currentTimeMillis();
-        System.out.println("Selection Sort Tempo em ms:"+ (fim-inicio)  );
+        System.out.println("Selection Sort Tempo em ms:"+ (fim-inicio)  +"\n");
 
         // Insertion Sort
         Integer[] vetorInsertion = vetorInteiros.clone();

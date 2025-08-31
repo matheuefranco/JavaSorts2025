@@ -8,7 +8,7 @@ public class SortObserver {
         //System.out.println("Trocando indices:"+indice1+" com "+ indice2);
     }
 
-    public void aoConcluir(int totalComparacoes, int totalTrocas){
+    public void aoConcluir(long totalComparacoes, long totalTrocas){
         System.out.println
         ("Total de comparacoes:"+ totalComparacoes + "\n Total Trocas: "+ totalTrocas);
     }

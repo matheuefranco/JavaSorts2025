@@ -1,16 +1,16 @@
 public abstract class ObservableSort<T> {
     private SortObserver observer;
-    private int contadorComparacao = 0;
-    private int contadorTrocas = 0;
+    private long  contadorComparacao = 0;
+    private long contadorTrocas = 0;
 
     public void setObserver(SortObserver observer) {
         this.observer = observer;
     }
     
-    public int getContadorComparacao() {
+    public long getContadorComparacao() {
         return contadorComparacao;
     }
-    public int getContadorTrocas() {
+    public long getContadorTrocas() {
         return contadorTrocas;
     }
 

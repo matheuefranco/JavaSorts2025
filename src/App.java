@@ -25,11 +25,11 @@ public class App {
         return numeros;
     }
     public static void main(String[] args) throws Exception {
-        int tamanho = 100000;
+        int tamanho;
         long inicio, fim;
         Scanner leia = new Scanner(System.in);
-        //Integer[] vetorInteiros = carregarArquivo("numeros.txt");
-        //System.out.println("Array:"+Arrays.toString(vetorInteiros));
+        System.out.println("Tamanho do vetor:");
+        tamanho = leia.nextInt();
         Integer[] vetorInteiros = new Integer[tamanho];
         Random rand = new Random();
         for(int i=0;i<tamanho;i++)

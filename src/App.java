@@ -5,16 +5,26 @@ import java.time.LocalDate;
 import java.util.*;
 public class App {
 
-     public static Pessoa[] vetorDePessoas() {
-        return new Pessoa[]{
-            new Pessoa("João", LocalDate.of(1990, 1, 1)),
-            new Pessoa("Ana", LocalDate.of(1992, 2, 2)),
-            new Pessoa("Maria", LocalDate.of(1995, 5, 5)),
-            new Pessoa("Pedro", LocalDate.of(1993, 4, 4)),
-            new Pessoa("Lucas", LocalDate.of(1991, 6, 6)),
-            new Pessoa("Carlos", LocalDate.of(1988, 3, 3))
-        };
-    }
+public static Pessoa[] vetorDePessoas() {
+    return new Pessoa[]{
+        new Pessoa("João", LocalDate.of(1990, 1, 1)),
+        new Pessoa("Ana", LocalDate.of(1992, 2, 2)),
+        new Pessoa("Maria", LocalDate.of(1995, 5, 5)),
+        new Pessoa("Pedro", LocalDate.of(1993, 4, 4)),
+        new Pessoa("Lucas", LocalDate.of(1991, 6, 6)),
+        new Pessoa("Carlos", LocalDate.of(1988, 3, 3)),
+        new Pessoa("Maria", LocalDate.of(1990, 7, 7)),   // mesmo nome
+        new Pessoa("Maria", LocalDate.of(1992, 8, 8)),   // mesmo nome
+        new Pessoa("Felipe", LocalDate.of(1994, 9, 9)),
+        new Pessoa("Bruna", LocalDate.of(1989, 10, 10))
+    };
+}
+
+    static void mostrarVetorPessoas(Pessoa[] vetor) {
+        for (Pessoa p : vetor) {
+            System.out.println(p+"\n");
+        }
+    }   
 
     public static Integer[] carregarArquivo(String nomeArquivo) throws IOException {
         List<String> linhas = Files.readAllLines(Paths.get(nomeArquivo));
@@ -28,39 +38,40 @@ public class App {
         int tamanho;
         long inicio, fim;
         Scanner leia = new Scanner(System.in);
-        System.out.println("Tamanho do vetor:");
-        tamanho = leia.nextInt();
-        Integer[] vetorInteiros = new Integer[tamanho];
-        Random rand = new Random();
-        for(int i=0;i<tamanho;i++)
-            vetorInteiros[i] = rand.nextInt(100);
+        Comparator<Pessoa> comparadorData =  (p1, p2) -> p1.getDataNascimento().compareTo(p2.getDataNascimento());
+        
         // Bubble Sort
-        Integer[] vetorBubble = vetorInteiros.clone();
+        Pessoa[] vetorBubble = vetorDePessoas();
         BubbleSort bubbleSort = new BubbleSort();
-        SortObserver observador = new SortObserver();
-        bubbleSort.setObserver(observador);
-        inicio = System.currentTimeMillis();
+        bubbleSort.sort(vetorBubble, comparadorData);
+        System.out.println("Vetor ordenado com Bubble Sort pela data de nascimento:");
+        mostrarVetorPessoas(vetorBubble);
         bubbleSort.sort(vetorBubble);
-        fim = System.currentTimeMillis();
-        System.out.println("Bubble Sort Tempo em ms:"+ (fim-inicio) +"\n");
+        System.out.println("Vetor ordenado com Bubble Sort:");
+        mostrarVetorPessoas(vetorBubble);
+
 
         // Selection Sort
-        Integer[] vetorSelection = vetorInteiros.clone();
+        Pessoa[] vetorSelection = vetorDePessoas();
         SelectionSort selectionSort = new SelectionSort();
-        selectionSort.setObserver(new SortObserver());
-        inicio = System.currentTimeMillis();
+        selectionSort.sort(vetorSelection, comparadorData);
+        System.out.println("Vetor ordenado com Selection Sort pela data de nascimento:");
+        mostrarVetorPessoas(vetorSelection);
         selectionSort.sort(vetorSelection);
-        fim = System.currentTimeMillis();
-        System.out.println("Selection Sort Tempo em ms:"+ (fim-inicio)  +"\n");
+        System.out.println("Vetor ordenado com Selection Sort:");
+        mostrarVetorPessoas(vetorSelection);
 
-        // Insertion Sort
-        Integer[] vetorInsertion = vetorInteiros.clone();
+        
+
+
+       /* // Insertion Sort
+        Pessoa[] vetorInsertion = vetorDePessoas();
         InsertionSort insertionSort = new InsertionSort();
         insertionSort.setObserver(new SortObserver());
         inicio = System.currentTimeMillis();
         insertionSort.sort(vetorInsertion);
         fim = System.currentTimeMillis();
-        System.out.println("Insertion Sort Tempo em ms:"+ (fim-inicio)  );
+        System.out.println("Insertion Sort Tempo em ms:"+ (fim-inicio)  );*/
     
     }
 }

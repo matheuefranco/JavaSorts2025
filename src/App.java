@@ -24,6 +24,7 @@ public static Pessoa[] vetorDePessoas() {
         for (Pessoa p : vetor) {
             System.out.println(p+"\n");
         }
+        System.out.println("\n");
     }   
 
     public static Integer[] carregarArquivo(String nomeArquivo) throws IOException {
@@ -62,7 +63,12 @@ public static Pessoa[] vetorDePessoas() {
         mostrarVetorPessoas(vetorSelection);
 
         
-
+      /*   // Quick Sort
+        Integer[] vetor = {7, 2, 9, 4, 8, 3, 6, 1};
+        QuickSort<Integer> quickSort = new QuickSort<>();
+        System.out.println("Vetor inicial: " + Arrays.toString(vetor));
+        quickSort.sort(vetor);
+        System.out.println("\nVetor ordenado: " + Arrays.toString(vetor));*/
 
        /* // Insertion Sort
         Pessoa[] vetorInsertion = vetorDePessoas();

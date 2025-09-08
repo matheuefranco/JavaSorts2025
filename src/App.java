@@ -22,7 +22,7 @@ public static Pessoa[] vetorDePessoas() {
 
     static void mostrarVetorPessoas(Pessoa[] vetor) {
         for (Pessoa p : vetor) {
-            System.out.println(p+"\n");
+            System.out.println(p);
         }
         System.out.println("\n");
     }   
@@ -62,6 +62,7 @@ public static Pessoa[] vetorDePessoas() {
         System.out.println("Vetor ordenado com Selection Sort:");
         mostrarVetorPessoas(vetorSelection);
 
+        Arrays.sort(vetorSelection);
         
       /*   // Quick Sort
         Integer[] vetor = {7, 2, 9, 4, 8, 3, 6, 1};

@@ -51,12 +51,29 @@ public static Pessoa[] vetorDePessoas() {
         // Bubble Sort
         Pessoa[] vetorBubble = vetorDePessoas();
         BubbleSort bubbleSort = new BubbleSort();
-        bubbleSort.sort(vetorBubble, comparadorData);
-        System.out.println("Vetor ordenado com Bubble Sort pela data de nascimento:");
-        mostrarVetorPessoas(vetorBubble);
         bubbleSort.sort(vetorBubble);
-        System.out.println("Vetor ordenado com Bubble Sort:");
         mostrarVetorPessoas(vetorBubble);
+        System.out.println("Entre com o nome e data nascimento");
+        String nome = leia.nextLine();
+        LocalDate data = LocalDate.parse(leia.nextLine());
+        Busca<Pessoa> busca = new Busca<>();
+        Pessoa pessoa = new Pessoa(nome, data);
+        System.out.println("Buscar por nome[1] ou data nascimento[2]");
+        int resp = leia.nextInt();
+        int indice;
+        if(resp == 1)
+            indice = busca.binaria(vetorBubble, pessoa);
+        else
+            indice = busca.binaria(vetorBubble, pessoa, comparadorData); 
+            
+        if(indice==-1)
+            System.out.println("Nao encontrado :(");
+        else
+            System.out.println("Encontrado na posicao "+ indice+ ":)");        
+
+        
+
+
 
 
       /*   // Selection Sort

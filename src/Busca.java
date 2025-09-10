@@ -11,10 +11,30 @@ public class Busca<T> {
 
     public int linear(T[] array, T x, Comparator comparator){
         for(int i=0;i<array.length;i++){
-            if(x.equals(array[i])) // mudar e testar no main
+            if(comparator.compare(x,array[i])==0) // mudar e testar no main
                 return i;
         }// fim for
         return -1;        
+    }
+
+    public int binaria(T[] array, T x, Comparator<T> comparator){
+        int inicio =0, fim = array.length-1;
+        int meio;
+        while(inicio<=fim){
+            meio = (inicio+fim)/2;
+            int comparacao = comparator.compare(x, array[meio]);
+            if(comparacao==0)
+                return meio;
+            if(comparacao<0)
+                fim = meio-1;
+            else
+                inicio = meio+1;        
+        }// fim while
+        return -1;
+    }
+
+    public int binaria(T[] array, T x){
+        return binaria(array, x, (a,b)->((Comparable<T>) a).compareTo(b));
     }
 
 

@@ -40,7 +40,14 @@ public static Pessoa[] vetorDePessoas() {
         long inicio, fim;
         Scanner leia = new Scanner(System.in);
         Comparator<Pessoa> comparadorData =  (p1, p2) -> p1.getDataNascimento().compareTo(p2.getDataNascimento());
-        
+        Comparator<Pessoa> comparadorNomeeDataNascimento =  (p1, p2) -> {
+            int cmp = p1.getNome().compareTo(p2.getNome());
+            if (cmp == 0) {
+                cmp = p1.getDataNascimento().compareTo(p2.getDataNascimento());
+            }
+            return cmp;
+        };
+
         // Bubble Sort
         Pessoa[] vetorBubble = vetorDePessoas();
         BubbleSort bubbleSort = new BubbleSort();
@@ -52,7 +59,7 @@ public static Pessoa[] vetorDePessoas() {
         mostrarVetorPessoas(vetorBubble);
 
 
-        // Selection Sort
+      /*   // Selection Sort
         Pessoa[] vetorSelection = vetorDePessoas();
         SelectionSort selectionSort = new SelectionSort();
         selectionSort.sort(vetorSelection, comparadorData);
@@ -61,9 +68,31 @@ public static Pessoa[] vetorDePessoas() {
         selectionSort.sort(vetorSelection);
         System.out.println("Vetor ordenado com Selection Sort:");
         mostrarVetorPessoas(vetorSelection);
+        */
 
-        Arrays.sort(vetorSelection);
-        
+
+        Busca<Pessoa> busca = new Busca<>();
+        System.out.println("Entre com o nome e data de nascimento a ser buscado:");
+        Scanner scanner = new Scanner(System.in);
+        String nome = scanner.nextLine();
+        LocalDate data = LocalDate.parse(scanner.nextLine());
+        Pessoa chave = new Pessoa(nome, data);
+        System.out.println("Buscar por nome[1], data de nascimento[2] ou os dois em conjunto[3]?");
+        Integer tipoBusca = scanner.nextInt();
+        int indice;
+        if (tipoBusca==1) {
+            indice = busca.binaria(vetorBubble, chave);
+        } else if(tipoBusca==2 ){
+            indice = busca.binaria(vetorBubble, chave, comparadorData);
+        } else {
+            indice = busca.binaria(vetorBubble, chave, comparadorNomeeDataNascimento);
+        }
+        if (indice != -1) {
+            System.out.println("Pessoa encontrada: " + vetorBubble[indice] + " no índice " + indice );
+        } else {
+            System.out.println("Pessoa não encontrada.");
+        }
+
       /*   // Quick Sort
         Integer[] vetor = {7, 2, 9, 4, 8, 3, 6, 1};
         QuickSort<Integer> quickSort = new QuickSort<>();
